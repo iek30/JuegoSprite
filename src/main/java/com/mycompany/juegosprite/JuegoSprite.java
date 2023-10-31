@@ -4,7 +4,11 @@
 
 package com.mycompany.juegosprite;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.net.Socket;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -42,10 +46,53 @@ public class JuegoSprite {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new Ventana().setVisible(true);
-                    while (true) {                        
-                        
-                    }
+                    Ventana ventana = new Ventana();
+                    ventana.setVisible(true);
+                    String serverAddress = "127.0.0.1"; // Cambia esto por la dirección IP o nombre de host del servidor
+                    int serverPort = 90;
+                    Thread clientThread = new Thread(() -> {
+                        try {
+
+                            while (true) {
+                                
+                                String coordenadasStr = ventana.input.readUTF();
+                                
+                                String[] coordenadas = coordenadasStr.split(",");
+                                
+                                for (int i = 0; i < coordenadas.length; i++) {
+                                    
+                                    switch (i) {
+                                        case 0:
+                                            ventana.jLabel1.setLocation(Integer.parseInt(coordenadas[i]), (int) ventana.jLabel1.getLocation().getY());
+                                            break;
+                                        case 1:
+                                            ventana.jLabel2.setLocation(Integer.parseInt(coordenadas[i]), (int) ventana.jLabel2.getLocation().getY());
+                                            break;
+                                        case 2:
+                                            ventana.jLabel3.setLocation(Integer.parseInt(coordenadas[i]), (int) ventana.jLabel3.getLocation().getY());
+                                            break;
+                                        case 3:
+                                            ventana.jLabel4.setLocation(Integer.parseInt(coordenadas[i]), (int) ventana.jLabel4.getLocation().getY());
+                                            break;
+                                        default:
+                                            throw new AssertionError();
+                                    }
+                                    
+                                }
+                                
+                                // Procesa coordenadas recibidas
+                                System.out.println("Coordenadas recibidas: " + coordenadasStr);
+                                
+                                
+                                
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    });
+
+                    // Inicia el hilo del cliente
+                    clientThread.start();
                 } catch (IOException ex) {
                     Logger.getLogger(JuegoSprite.class.getName()).log(Level.SEVERE, null, ex);
                 }
