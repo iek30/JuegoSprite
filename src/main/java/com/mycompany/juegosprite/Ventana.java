@@ -11,6 +11,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 
 /**
  *
@@ -18,21 +19,24 @@ import java.util.logging.Logger;
  */
 public class Ventana extends javax.swing.JFrame{
 
-    private Integer ancho_pantalla;
+    public Integer ancho_pantalla;
     public Socket socket;
     public DataInputStream input;
     public DataOutputStream output;
     public int coordenada;
     public ArrayList<Integer> coordenadas;
+    final int mitadPantalla = (java.awt.Toolkit.getDefaultToolkit().getScreenSize().width/2)-150;
     
     public Ventana() throws IOException {
         initComponents();
+        setVisible(true);
         setResizable(false);
+        
         this.socket = new Socket("127.0.0.1",90);
-        this.ancho_pantalla = 340;
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.input = new DataInputStream(socket.getInputStream());
         this.output = new DataOutputStream(socket.getOutputStream());
-        this.coordenada = 170;
+        this.coordenada = mitadPantalla;
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -43,6 +47,7 @@ public class Ventana extends javax.swing.JFrame{
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(900, 940));
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 formKeyReleased(evt);
@@ -50,42 +55,42 @@ public class Ventana extends javax.swing.JFrame{
         });
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("1");
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\dam\\Documents\\GitHub\\JuegoSprite_Cayetano\\resources\\coche1Derecha.png")); // NOI18N
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("2");
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\dam\\Documents\\GitHub\\JuegoSprite_Cayetano\\resources\\coche2Derecha.png")); // NOI18N
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("3");
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\dam\\Documents\\GitHub\\JuegoSprite_Cayetano\\resources\\coche3Derecha.png")); // NOI18N
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("4");
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\dam\\Documents\\GitHub\\JuegoSprite_Cayetano\\resources\\coche4Derecha.png")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(194, Short.MAX_VALUE)
+                .addContainerGap(307, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(178, 178, 178))
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3))
+                .addGap(45, 45, 45))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addComponent(jLabel4)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
@@ -94,10 +99,10 @@ public class Ventana extends javax.swing.JFrame{
     private void formKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyReleased
         // TODO add your handling code here:
         
-        if (evt.getKeyCode() == 37 && jLabel1.getLocation().getX() > 0) {
+        if (evt.getKeyCode() == 37 && coordenada-20 >=0) {
             coordenada -= 20;
         }
-        else if (evt.getKeyCode() == 39 && jLabel1.getLocation().getX() < ancho_pantalla){
+        else if (evt.getKeyCode() == 39 && coordenada+20 <= mitadPantalla*2){
             coordenada += 20;
         }
         try {

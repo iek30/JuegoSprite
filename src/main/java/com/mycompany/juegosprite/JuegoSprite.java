@@ -4,11 +4,7 @@
 
 package com.mycompany.juegosprite;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.net.Socket;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -47,9 +43,6 @@ public class JuegoSprite {
             public void run() {
                 try {
                     Ventana ventana = new Ventana();
-                    ventana.setVisible(true);
-                    String serverAddress = "127.0.0.1"; // Cambia esto por la dirección IP o nombre de host del servidor
-                    int serverPort = 90;
                     Thread clientThread = new Thread(() -> {
                         try {
 
