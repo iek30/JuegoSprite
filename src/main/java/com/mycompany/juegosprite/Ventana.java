@@ -24,14 +24,12 @@ public class Ventana extends javax.swing.JFrame{
     public DataInputStream input;
     public DataOutputStream output;
     public int coordenada;
-    public ArrayList<Integer> coordenadas;
     final int mitadPantalla = (java.awt.Toolkit.getDefaultToolkit().getScreenSize().width/2)-150;
     
     public Ventana() throws IOException {
         initComponents();
         setVisible(true);
         setResizable(false);
-        
         this.socket = new Socket("127.0.0.1",90);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.input = new DataInputStream(socket.getInputStream());
