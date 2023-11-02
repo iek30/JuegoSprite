@@ -39,14 +39,16 @@ public class Ventana extends javax.swing.JFrame{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        panel = new javax.swing.JPanel();
+        lblCoche1 = new javax.swing.JLabel();
+        lblCoche2 = new javax.swing.JLabel();
+        lblCoche3 = new javax.swing.JLabel();
+        lblCoche4 = new javax.swing.JLabel();
+        lblBanderaFinal = new javax.swing.JLabel();
+        lblFondoPantalla = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Carrera Coches");
         setSize(new java.awt.Dimension(1920, 1080));
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -54,42 +56,46 @@ public class Ventana extends javax.swing.JFrame{
             }
         });
 
-        jPanel1.setLayout(null);
+        panel.setLayout(null);
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche1Derecha.png"))); // NOI18N
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(810, -10, 300, 205);
+        lblCoche1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCoche1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche1Derecha.png"))); // NOI18N
+        panel.add(lblCoche1);
+        lblCoche1.setBounds(810, 10, 300, 205);
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche2Derecha.png"))); // NOI18N
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(810, 270, 300, 171);
+        lblCoche2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCoche2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche2Derecha.png"))); // NOI18N
+        panel.add(lblCoche2);
+        lblCoche2.setBounds(810, 320, 300, 171);
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche3Derecha.png"))); // NOI18N
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(810, 530, 300, 199);
+        lblCoche3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCoche3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche3Derecha.png"))); // NOI18N
+        panel.add(lblCoche3);
+        lblCoche3.setBounds(810, 560, 300, 199);
 
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche4Derecha.png"))); // NOI18N
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(810, 850, 300, 195);
+        lblCoche4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCoche4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche4Derecha.png"))); // NOI18N
+        panel.add(lblCoche4);
+        lblCoche4.setBounds(810, 860, 300, 195);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/carretera.jpg"))); // NOI18N
-        jLabel5.setPreferredSize(new java.awt.Dimension(2100, 1080));
-        jPanel1.add(jLabel5);
-        jLabel5.setBounds(0, 0, 2100, 1080);
+        lblBanderaFinal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/banderaMeta.png"))); // NOI18N
+        panel.add(lblBanderaFinal);
+        lblBanderaFinal.setBounds(1820, 0, 104, 1060);
+
+        lblFondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/carretera.jpg"))); // NOI18N
+        lblFondoPantalla.setPreferredSize(new java.awt.Dimension(2100, 1080));
+        panel.add(lblFondoPantalla);
+        lblFondoPantalla.setBounds(0, 0, 2100, 1180);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1528, Short.MAX_VALUE)
+            .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 1920, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1029, Short.MAX_VALUE)
+            .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -99,10 +105,10 @@ public class Ventana extends javax.swing.JFrame{
         // TODO add your handling code here:
         
         if (evt.getKeyCode() == 37 && coordenada-20 >=0) {
-            coordenada -= 20;
+            coordenada -= 40;
         }
         else if (evt.getKeyCode() == 39 && coordenada+20 <= mitadPantalla*2){
-            coordenada += 20;
+            coordenada += 40;
         }
         try {
             output.writeUTF(Integer.toString(coordenada));
@@ -115,11 +121,12 @@ public class Ventana extends javax.swing.JFrame{
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JLabel jLabel1;
-    public javax.swing.JLabel jLabel2;
-    public javax.swing.JLabel jLabel3;
-    public javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
+    public javax.swing.JLabel lblBanderaFinal;
+    public javax.swing.JLabel lblCoche1;
+    public javax.swing.JLabel lblCoche2;
+    public javax.swing.JLabel lblCoche3;
+    public javax.swing.JLabel lblCoche4;
+    private javax.swing.JLabel lblFondoPantalla;
+    private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables
 }

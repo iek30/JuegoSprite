@@ -51,40 +51,46 @@ public class JuegoSprite {
                                 
                                 String coordenadasStr = ventana.input.readUTF();
                                 
-                                String[] coordenadasInput = coordenadasStr.split(",");
+                                String[] coordenadasPuntosInput = coordenadasStr.split(",");
                                 
-                                for (int i = 0; i < coordenadasInput.length; i++) {
+                                int cont = 0;
+                                
+                                for (int i = 0; i < coordenadasPuntosInput.length; i++) {
                                     
                                     switch (i) {
                                         case 0:
-                                            if(Integer.parseInt(coordenadasInput[i])>coordenadas[i]) ventana.jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche1Derecha.png")));
-                                            if(Integer.parseInt(coordenadasInput[i])<coordenadas[i]) ventana.jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche1Izquierda.png")));
-                                            ventana.jLabel1.setLocation(Integer.parseInt(coordenadasInput[i]), (int) ventana.jLabel1.getLocation().getY());
-                                            coordenadas[i] = Integer.parseInt(coordenadasInput[i]);
+                                            if(Integer.parseInt(coordenadasPuntosInput[i])>coordenadas[i]) ventana.lblCoche1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche1Derecha.png")));
+                                            if(Integer.parseInt(coordenadasPuntosInput[i])<coordenadas[i]) ventana.lblCoche1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche1Izquierda.png")));
+                                            ventana.lblCoche1.setLocation(Integer.parseInt(coordenadasPuntosInput[i]), (int) ventana.lblCoche1.getLocation().getY());
+                                            coordenadas[i] = Integer.parseInt(coordenadasPuntosInput[i]);
                                             break;
                                         case 1:
-                                            if(Integer.parseInt(coordenadasInput[i])>coordenadas[i]) ventana.jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche2Derecha.png")));
-                                            if(Integer.parseInt(coordenadasInput[i])<coordenadas[i]) ventana.jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche2Izquierda.png")));
-                                            ventana.jLabel2.setLocation(Integer.parseInt(coordenadasInput[i]), (int) ventana.jLabel2.getLocation().getY());
-                                            coordenadas[i] = Integer.parseInt(coordenadasInput[i]);
+                                            if(Integer.parseInt(coordenadasPuntosInput[i])>coordenadas[i]) ventana.lblCoche2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche2Derecha.png")));
+                                            if(Integer.parseInt(coordenadasPuntosInput[i])<coordenadas[i]) ventana.lblCoche2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche2Izquierda.png")));
+                                            ventana.lblCoche2.setLocation(Integer.parseInt(coordenadasPuntosInput[i]), (int) ventana.lblCoche2.getLocation().getY());
+                                            coordenadas[i] = Integer.parseInt(coordenadasPuntosInput[i]);
                                             break;
                                         case 2:
-                                            if(Integer.parseInt(coordenadasInput[i])>coordenadas[i]) ventana.jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche3Derecha.png")));
-                                            if(Integer.parseInt(coordenadasInput[i])<coordenadas[i]) ventana.jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche3Izquierda.png")));
-                                            ventana.jLabel3.setLocation(Integer.parseInt(coordenadasInput[i]), (int) ventana.jLabel3.getLocation().getY());
-                                            coordenadas[i] = Integer.parseInt(coordenadasInput[i]);
+                                            if(Integer.parseInt(coordenadasPuntosInput[i])>coordenadas[i]) ventana.lblCoche3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche3Derecha.png")));
+                                            if(Integer.parseInt(coordenadasPuntosInput[i])<coordenadas[i]) ventana.lblCoche3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche3Izquierda.png")));
+                                            ventana.lblCoche3.setLocation(Integer.parseInt(coordenadasPuntosInput[i]), (int) ventana.lblCoche3.getLocation().getY());
+                                            coordenadas[i] = Integer.parseInt(coordenadasPuntosInput[i]);
                                             break;
                                         case 3:
-                                            if(Integer.parseInt(coordenadasInput[i])>coordenadas[i]) ventana.jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche4Derecha.png")));
-                                            if(Integer.parseInt(coordenadasInput[i])<coordenadas[i]) ventana.jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche4Izquierda.png")));
-                                            ventana.jLabel4.setLocation(Integer.parseInt(coordenadasInput[i]), (int) ventana.jLabel4.getLocation().getY());
-                                            coordenadas[i] = Integer.parseInt(coordenadasInput[i]);
+                                            if(Integer.parseInt(coordenadasPuntosInput[i])>coordenadas[i]) ventana.lblCoche4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche4Derecha.png")));
+                                            if(Integer.parseInt(coordenadasPuntosInput[i])<coordenadas[i]) ventana.lblCoche4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche4Izquierda.png")));
+                                            ventana.lblCoche4.setLocation(Integer.parseInt(coordenadasPuntosInput[i]), (int) ventana.lblCoche4.getLocation().getY());
+                                            coordenadas[i] = Integer.parseInt(coordenadasPuntosInput[i]);
                                             break;
                                         default:
-                                            throw new AssertionError();
+                                            cont+=Integer.parseInt(coordenadasPuntosInput[i]);
                                     }
                                     
                                 }
+                                
+                                if(cont%2==0) ventana.lblBanderaFinal.setLocation(1820, (int) ventana.lblBanderaFinal.getLocation().getY());
+                                
+                                else ventana.lblBanderaFinal.setLocation(0, (int) ventana.lblBanderaFinal.getLocation().getY());
                                 
                                 // Procesa coordenadas recibidas
                                 System.out.println("Coordenadas recibidas: " + coordenadasStr);
