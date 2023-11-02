@@ -18,29 +18,40 @@ import javax.swing.JFrame;
  * @author cayet
  */
 public class Ventana extends javax.swing.JFrame{
-
+    
+    private final String IP = "127.0.0.1";
+    private final int PUERTO = 90;
+    private final int VELOCIDAD = 40;
+    public final int TIEMPO = 90;
+    public final int TIEMPO_RESTANTE = 60;
+    final int MITAD_PANTALLA = (java.awt.Toolkit.getDefaultToolkit().getScreenSize().width/2)-150;
     public Integer ancho_pantalla;
     public Socket socket;
     public DataInputStream input;
     public DataOutputStream output;
     public int coordenada;
-    final int mitadPantalla = (java.awt.Toolkit.getDefaultToolkit().getScreenSize().width/2)-150;
+    
     
     public Ventana() throws IOException {
         initComponents();
         setVisible(true);
         setResizable(false);
-        this.socket = new Socket("127.0.0.1",90);
+        this.socket = new Socket(IP,PUERTO);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.input = new DataInputStream(socket.getInputStream());
         this.output = new DataOutputStream(socket.getOutputStream());
-        this.coordenada = mitadPantalla;
+        this.coordenada = MITAD_PANTALLA;
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         panel = new javax.swing.JPanel();
         lblCoche1 = new javax.swing.JLabel();
+        lblCoche1Puntos = new javax.swing.JLabel();
+        lblCoche2Puntos = new javax.swing.JLabel();
+        lblCoche3Puntos = new javax.swing.JLabel();
+        lblCoche4Puntos = new javax.swing.JLabel();
+        lblTiempo = new javax.swing.JLabel();
         lblCoche2 = new javax.swing.JLabel();
         lblCoche3 = new javax.swing.JLabel();
         lblCoche4 = new javax.swing.JLabel();
@@ -62,6 +73,36 @@ public class Ventana extends javax.swing.JFrame{
         lblCoche1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche1Derecha.png"))); // NOI18N
         panel.add(lblCoche1);
         lblCoche1.setBounds(810, 10, 300, 205);
+
+        lblCoche1Puntos.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        lblCoche1Puntos.setForeground(new java.awt.Color(255, 255, 255));
+        lblCoche1Puntos.setText("Coche 1:");
+        panel.add(lblCoche1Puntos);
+        lblCoche1Puntos.setBounds(220, 490, 540, 60);
+
+        lblCoche2Puntos.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        lblCoche2Puntos.setForeground(new java.awt.Color(255, 255, 255));
+        lblCoche2Puntos.setText("Coche 2: ");
+        panel.add(lblCoche2Puntos);
+        lblCoche2Puntos.setBounds(220, 780, 540, 60);
+
+        lblCoche3Puntos.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        lblCoche3Puntos.setForeground(new java.awt.Color(255, 255, 255));
+        lblCoche3Puntos.setText("Coche 3:");
+        panel.add(lblCoche3Puntos);
+        lblCoche3Puntos.setBounds(1280, 490, 540, 60);
+
+        lblCoche4Puntos.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        lblCoche4Puntos.setForeground(new java.awt.Color(255, 255, 255));
+        lblCoche4Puntos.setText("Coche 4:");
+        panel.add(lblCoche4Puntos);
+        lblCoche4Puntos.setBounds(1280, 780, 540, 60);
+
+        lblTiempo.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        lblTiempo.setForeground(new java.awt.Color(0, 0, 0));
+        lblTiempo.setText("Tiempo Preparacion:");
+        panel.add(lblTiempo);
+        lblTiempo.setBounds(750, 240, 540, 60);
 
         lblCoche2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCoche2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche2Derecha.png"))); // NOI18N
@@ -104,11 +145,11 @@ public class Ventana extends javax.swing.JFrame{
     private void formKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyReleased
         // TODO add your handling code here:
         
-        if (evt.getKeyCode() == 37 && coordenada-20 >=0) {
-            coordenada -= 40;
+        if (evt.getKeyCode() == 37 && coordenada-VELOCIDAD >=0) {
+            coordenada -= VELOCIDAD;
         }
-        else if (evt.getKeyCode() == 39 && coordenada+20 <= mitadPantalla*2){
-            coordenada += 40;
+        else if (evt.getKeyCode() == 39 && coordenada+VELOCIDAD <= MITAD_PANTALLA*2){
+            coordenada += VELOCIDAD;
         }
         try {
             output.writeUTF(Integer.toString(coordenada));
@@ -123,10 +164,15 @@ public class Ventana extends javax.swing.JFrame{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel lblBanderaFinal;
     public javax.swing.JLabel lblCoche1;
+    public javax.swing.JLabel lblCoche1Puntos;
     public javax.swing.JLabel lblCoche2;
+    public javax.swing.JLabel lblCoche2Puntos;
     public javax.swing.JLabel lblCoche3;
+    public javax.swing.JLabel lblCoche3Puntos;
     public javax.swing.JLabel lblCoche4;
+    public javax.swing.JLabel lblCoche4Puntos;
     private javax.swing.JLabel lblFondoPantalla;
+    public javax.swing.JLabel lblTiempo;
     private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables
 }

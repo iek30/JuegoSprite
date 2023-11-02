@@ -43,19 +43,40 @@ public class JuegoSprite {
             public void run() {
                 try {
                     Ventana ventana = new Ventana();
-                    Integer[] coordenadas = {ventana.mitadPantalla, ventana.mitadPantalla, ventana.mitadPantalla, ventana.mitadPantalla};
+                    Integer[] coordenadas = {ventana.MITAD_PANTALLA, ventana.MITAD_PANTALLA, ventana.MITAD_PANTALLA, ventana.MITAD_PANTALLA};
                     Thread clientThread = new Thread(() -> {
                         try {
 
-                            while (true) {
+                            boolean finalizar = true;
+                            
+                            boolean empezado = false;
+                            
+                            while (finalizar) {
                                 
                                 String coordenadasStr = ventana.input.readUTF();
                                 
                                 String[] coordenadasPuntosInput = coordenadasStr.split(",");
                                 
+                                if(Integer.parseInt(coordenadasPuntosInput[coordenadasPuntosInput.length-1])>ventana.TIEMPO_RESTANTE) ventana.lblTiempo.setText("Tiempo Preparacion: " + (Integer.parseInt(coordenadasPuntosInput[coordenadasPuntosInput.length-1])-ventana.TIEMPO_RESTANTE));
+                                
+                                else if(Integer.parseInt(coordenadasPuntosInput[coordenadasPuntosInput.length-1])<ventana.TIEMPO_RESTANTE && empezado==false) {
+                                    ventana.coordenada = ventana.MITAD_PANTALLA;
+                                    empezado=true;
+                                    ventana.lblCoche1.setLocation(ventana.coordenada, (int) ventana.lblCoche1.getLocation().getY());
+                                    ventana.lblCoche1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche1Derecha.png")));
+                                    ventana.lblCoche2.setLocation(ventana.coordenada, (int) ventana.lblCoche2.getLocation().getY());
+                                    ventana.lblCoche2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche2Derecha.png")));
+                                    ventana.lblCoche3.setLocation(ventana.coordenada, (int) ventana.lblCoche3.getLocation().getY());
+                                    ventana.lblCoche3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche3Derecha.png")));
+                                    ventana.lblCoche4.setLocation(ventana.coordenada, (int) ventana.lblCoche4.getLocation().getY());
+                                    ventana.lblCoche4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche4Derecha.png")));
+                                }
+                                
+                                else ventana.lblTiempo.setText("Tiempo Restante: " + coordenadasPuntosInput[coordenadasPuntosInput.length-1]);
+                                
                                 int cont = 0;
                                 
-                                for (int i = 0; i < coordenadasPuntosInput.length; i++) {
+                                for (int i = 0; i < coordenadasPuntosInput.length-1; i++) {
                                     
                                     switch (i) {
                                         case 0:
@@ -88,14 +109,41 @@ public class JuegoSprite {
                                     
                                 }
                                 
-                                if(cont%2==0) ventana.lblBanderaFinal.setLocation(1820, (int) ventana.lblBanderaFinal.getLocation().getY());
+                                if(cont%2==0) ventana.lblBanderaFinal.setLocation((java.awt.Toolkit.getDefaultToolkit().getScreenSize().width)-100, (int) ventana.lblBanderaFinal.getLocation().getY());
                                 
                                 else ventana.lblBanderaFinal.setLocation(0, (int) ventana.lblBanderaFinal.getLocation().getY());
+                                
+                                for (int i = coordenadas.length; i < coordenadasPuntosInput.length-1; i++) {
+                                    
+                                    switch (i) {
+                                        case 4:
+                                            ventana.lblCoche1Puntos.setText("Coche 1 = " + coordenadasPuntosInput[i]);
+                                            break;
+                                        case 5:
+                                            ventana.lblCoche2Puntos.setText("Coche 2 = " + coordenadasPuntosInput[i]);
+                                            break;
+                                        case 6:
+                                            ventana.lblCoche3Puntos.setText("Coche 3 = " + coordenadasPuntosInput[i]);
+                                            break;
+                                        case 7:
+                                            ventana.lblCoche4Puntos.setText("Coche 4 = " + coordenadasPuntosInput[i]);
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                    
+                                }
                                 
                                 // Procesa coordenadas recibidas
                                 System.out.println("Coordenadas recibidas: " + coordenadasStr);
                                 
-                                
+                                if(Integer.parseInt(coordenadasPuntosInput[coordenadasPuntosInput.length-1])==0) {
+                                    finalizar=false;
+                                    ventana.lblCoche1Puntos.setForeground(new java.awt.Color(0, 0, 0));
+                                    ventana.lblCoche2Puntos.setForeground(new java.awt.Color(0, 0, 0));
+                                    ventana.lblCoche3Puntos.setForeground(new java.awt.Color(0, 0, 0));
+                                    ventana.lblCoche4Puntos.setForeground(new java.awt.Color(0, 0, 0));
+                                }
                                 
                             }
                         } catch (IOException e) {
