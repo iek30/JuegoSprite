@@ -47,7 +47,6 @@ public class Ventana extends javax.swing.JFrame{
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1920, 1080));
         setSize(new java.awt.Dimension(1920, 1080));
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -58,26 +57,26 @@ public class Ventana extends javax.swing.JFrame{
         jPanel1.setLayout(null);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\dam\\Documents\\GitHub\\JuegoSprite_Cayetano\\resources\\coche1Derecha.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche1Derecha.png"))); // NOI18N
         jPanel1.add(jLabel1);
         jLabel1.setBounds(810, -10, 300, 205);
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\dam\\Documents\\GitHub\\JuegoSprite_Cayetano\\resources\\coche2Derecha.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche2Derecha.png"))); // NOI18N
         jPanel1.add(jLabel2);
         jLabel2.setBounds(810, 270, 300, 171);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\dam\\Documents\\GitHub\\JuegoSprite_Cayetano\\resources\\coche3Derecha.png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche3Derecha.png"))); // NOI18N
         jPanel1.add(jLabel3);
         jLabel3.setBounds(810, 530, 300, 199);
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\dam\\Documents\\GitHub\\JuegoSprite_Cayetano\\resources\\coche4Derecha.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coche4Derecha.png"))); // NOI18N
         jPanel1.add(jLabel4);
         jLabel4.setBounds(810, 850, 300, 195);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\dam\\Documents\\GitHub\\JuegoSprite_Cayetano\\resources\\carretera.jpg")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/carretera.jpg"))); // NOI18N
         jLabel5.setPreferredSize(new java.awt.Dimension(2100, 1080));
         jPanel1.add(jLabel5);
         jLabel5.setBounds(0, 0, 2100, 1080);
