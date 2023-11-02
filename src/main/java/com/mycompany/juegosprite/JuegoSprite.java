@@ -64,19 +64,19 @@ public class JuegoSprite {
                                             break;
                                         case 1:
                                             if(Integer.parseInt(coordenadasInput[i])>coordenadas[i]) ventana.jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\dam\\Documents\\GitHub\\JuegoSprite_Cayetano\\resources\\coche2Derecha.png"));
-                                            if(Integer.parseInt(coordenadasInput[i])>coordenadas[i]) ventana.jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\dam\\Documents\\GitHub\\JuegoSprite_Cayetano\\resources\\coche2Izquierda.png"));
+                                            if(Integer.parseInt(coordenadasInput[i])<coordenadas[i]) ventana.jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\dam\\Documents\\GitHub\\JuegoSprite_Cayetano\\resources\\coche2Izquierda.png"));
                                             ventana.jLabel2.setLocation(Integer.parseInt(coordenadasInput[i]), (int) ventana.jLabel2.getLocation().getY());
                                             coordenadas[i] = Integer.parseInt(coordenadasInput[i]);
                                             break;
                                         case 2:
                                             if(Integer.parseInt(coordenadasInput[i])>coordenadas[i]) ventana.jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\dam\\Documents\\GitHub\\JuegoSprite_Cayetano\\resources\\coche3Derecha.png"));
-                                            if(Integer.parseInt(coordenadasInput[i])>coordenadas[i]) ventana.jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\dam\\Documents\\GitHub\\JuegoSprite_Cayetano\\resources\\coche3Izquierda.png"));
+                                            if(Integer.parseInt(coordenadasInput[i])<coordenadas[i]) ventana.jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\dam\\Documents\\GitHub\\JuegoSprite_Cayetano\\resources\\coche3Izquierda.png"));
                                             ventana.jLabel3.setLocation(Integer.parseInt(coordenadasInput[i]), (int) ventana.jLabel3.getLocation().getY());
                                             coordenadas[i] = Integer.parseInt(coordenadasInput[i]);
                                             break;
                                         case 3:
                                             if(Integer.parseInt(coordenadasInput[i])>coordenadas[i]) ventana.jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\dam\\Documents\\GitHub\\JuegoSprite_Cayetano\\resources\\coche4Derecha.png"));
-                                            if(Integer.parseInt(coordenadasInput[i])>coordenadas[i]) ventana.jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\dam\\Documents\\GitHub\\JuegoSprite_Cayetano\\resources\\coche4Izquierda.png"));
+                                            if(Integer.parseInt(coordenadasInput[i])<coordenadas[i]) ventana.jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\dam\\Documents\\GitHub\\JuegoSprite_Cayetano\\resources\\coche4Izquierda.png"));
                                             ventana.jLabel4.setLocation(Integer.parseInt(coordenadasInput[i]), (int) ventana.jLabel4.getLocation().getY());
                                             coordenadas[i] = Integer.parseInt(coordenadasInput[i]);
                                             break;
